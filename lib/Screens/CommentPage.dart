@@ -16,10 +16,9 @@ class CommentsPage extends StatefulWidget {
 
 class _CommentsPageState extends State<CommentsPage> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _namecontroller=TextEditingController();
-  TextEditingController _emailcontroller=TextEditingController();
-  TextEditingController _bodycontroller=TextEditingController();
-
+  TextEditingController _namecontroller = TextEditingController();
+  TextEditingController _emailcontroller = TextEditingController();
+  TextEditingController _bodycontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -125,9 +124,8 @@ class _CommentsPageState extends State<CommentsPage> {
                                 Padding(
                                   padding: const EdgeInsets.all(8),
                                   child: TextFormField(
-                                    decoration: const InputDecoration(
-                                        hintText: 'Name'
-                                    ),
+                                    decoration:
+                                        const InputDecoration(hintText: 'Name'),
                                     controller: _namecontroller,
                                   ),
                                 ),
@@ -135,8 +133,7 @@ class _CommentsPageState extends State<CommentsPage> {
                                   padding: const EdgeInsets.all(8),
                                   child: TextFormField(
                                     decoration: const InputDecoration(
-                                      hintText: 'Email'
-                                    ),
+                                        hintText: 'Email'),
                                     controller: _emailcontroller,
                                   ),
                                 ),
@@ -144,9 +141,8 @@ class _CommentsPageState extends State<CommentsPage> {
                                   padding: const EdgeInsets.all(8),
                                   child: TextFormField(
                                     maxLines: 5,
-                                    decoration: const InputDecoration(
-                                        hintText: 'Body'
-                                    ),
+                                    decoration:
+                                        const InputDecoration(hintText: 'Body'),
                                     controller: _bodycontroller,
                                   ),
                                 ),
@@ -157,6 +153,12 @@ class _CommentsPageState extends State<CommentsPage> {
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {
                                         _formKey.currentState!.save();
+                                        Comments com = Comments(
+                                            CommentID: 234,
+                                            Name: _namecontroller.text,
+                                            Body: _bodycontroller.text,
+                                            Email: _emailcontroller.text);
+                                        postComment(com, widget.post.postID);
                                       }
                                     },
                                   ),
