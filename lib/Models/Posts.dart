@@ -1,5 +1,5 @@
 class Posts{
-  final String postID;
+  final int postID;
   final String title;
   final String body;
 

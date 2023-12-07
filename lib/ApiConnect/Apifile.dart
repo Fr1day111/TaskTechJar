@@ -13,7 +13,7 @@ Future<List<Posts>> fetchdata() async{
     final body= response.body;
     datas= jsonDecode(body);
     posts=datas.map((e){
-      return Posts(postID: e['id'].toString(), title:e['title'],body:e['body']);
+      return Posts(postID: e['id'], title:e['title'],body:e['body']);
     }).toList();
   }
   catch(e){
@@ -31,7 +31,7 @@ Future<List<Comments>> fetchComments(int postID) async{
     final body= response.body;
     datas= jsonDecode(body);
     comments=datas.map((e){
-      return Comments(CommentID: e['id'].toString(), Name:e['name'],Email :e['email'],Body:e['body']);
+      return Comments(CommentID: e['id'], Name:e['name'],Email :e['email'],Body:e['body']);
     }).toList();
   }
   catch(e){

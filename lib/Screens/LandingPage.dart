@@ -16,7 +16,8 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Posts')),
+        elevation: 10,
+        title: const Center(child: Text('Posts')),
       ),
       body: SafeArea(
         child: Column(
@@ -28,6 +29,11 @@ class _LandingPageState extends State<LandingPage> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
                         child: CircularProgressIndicator(),
+                      );
+                    }
+                    if(snapshot.connectionState==ConnectionState.none){
+                      return const Center(
+                        child: Text('Something went wrong.....'),
                       );
                     }
                     List? data = snapshot.data;
@@ -45,7 +51,7 @@ class _LandingPageState extends State<LandingPage> {
                                             CommentsPage(post: post)));
                               },
                               child:
-                                  PostCard(title: post.title, body: post.body));
+                                  PostCard(post:post));
                         });
                   }),
             ),

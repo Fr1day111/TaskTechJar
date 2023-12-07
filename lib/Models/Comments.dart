@@ -1,5 +1,5 @@
 class Comments{
-  final String CommentID;
+  final int CommentID;
   final String Name;
   final String Email;
   final String Body;

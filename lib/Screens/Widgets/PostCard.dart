@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:techjartask/Models/Posts.dart';
 
 class PostCard extends StatelessWidget {
-  final String title;
-  final String body;
+  final Posts post;
 
-  const PostCard({super.key, required this.title, required this.body});
+  const PostCard({super.key, required this.post});
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +32,12 @@ class PostCard extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                title,
+                post.title,
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const Divider(color: Colors.black,),
-              Text(body,textAlign: TextAlign.center,),
+              Text(post.body,textAlign: TextAlign.center,),
             ],
           ),
         ),
