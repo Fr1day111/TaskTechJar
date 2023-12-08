@@ -75,8 +75,8 @@ class _CommentsPageState extends State<CommentsPage> {
                     future: fetchComments(widget.post.postID),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
+                        return Center(
+                          child: Image.asset("Assets/Animations/load.gif",height: 100,width: 100,),
                         );
                       }
                       List? data = snapshot.data;

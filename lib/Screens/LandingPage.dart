@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gif/flutter_gif.dart';
 import 'package:techjartask/ApiConnect/Apifile.dart';
 import 'package:techjartask/Models/Posts.dart';
 import 'package:techjartask/Screens/CommentPage.dart';
@@ -12,6 +13,7 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +29,8 @@ class _LandingPageState extends State<LandingPage> {
                   future: fetchdata(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
+                      return  Center(
+                        child: Image.asset("Assets/Animations/load.gif",height: 100,width: 100,),
                       );
                     }
                     if(snapshot.connectionState==ConnectionState.none){
