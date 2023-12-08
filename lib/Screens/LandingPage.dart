@@ -36,6 +36,9 @@ class _LandingPageState extends State<LandingPage> {
                         child: Text('Something went wrong.....'),
                       );
                     }
+                    if(snapshot.hasError){
+                      return Center(child: Text('${snapshot.error}'));
+                    }
                     List? data = snapshot.data;
                     //print(data);
                     return ListView.builder(

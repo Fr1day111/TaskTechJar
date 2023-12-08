@@ -40,7 +40,7 @@ Future<List<Comments>> fetchComments(int postID) async{
   return comments;
 }
 
-postComment(Comments comment,int postID)async{
+Future<int> postComment(Comments comment,int postID)async{
   Map<String, dynamic> commentData = {
     'postId': postID,
     'userId': comment.CommentID,
@@ -49,20 +49,13 @@ postComment(Comments comment,int postID)async{
     'body': comment.Body,
   };
 
-  // Convert the comment data to JSON
   String jsonData = jsonEncode(commentData);
   String url='https://jsonplaceholder.typicode.com/posts/$postID/comments';
-
-  // Make the POST request
-  try{
     final response= await http.post(
       Uri.parse(url),
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json; charset=UTF-8'},
       body: jsonData,
     );
-  }
-  catch(e){
-    print(e);
-  }
+    return response.statusCode;
 
 }
